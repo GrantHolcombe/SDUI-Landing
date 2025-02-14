@@ -1,6 +1,29 @@
 import Image from "next/image";
+import { configureServerSideGrowthBook } from "./growthbookServer";
+import { GrowthBook } from "@growthbook/growthbook";
 
-export default function Home() {
+
+export default async function Home() {
+  configureServerSideGrowthBook();
+
+  // Create and initialize a GrowthBook instance
+  const gb = new GrowthBook({
+    apiHost: "https://cdn.growthbook.io",
+    clientKey: "sdk-eur2L1Ktct6pUFD",
+    //decryptionKey: process.env.NEXT_PUBLIC_GROWTHBOOK_DECRYPTION_KEY,
+  });
+  await gb.init({ timeout: 1000 });
+  // Set targeting attributes for the user
+  // TODO: get from cookies/headers/db
+  await gb.setAttributes({
+    id: 1,
+    employee: true,
+  });
+  // Evaluate a feature flag
+  const newTitle = gb.isOn("new-title");
+  // Cleanup
+  gb.destroy();
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
@@ -14,13 +37,11 @@ export default function Home() {
         />
         <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
           <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
+          {newTitle ?
+            "copy a" :
+            "copy b"}
           </li>
-          <li>Save and see your changes instantly.</li>
+          <li>{typeof newTitle}</li>
         </ol>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">

@@ -4,7 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { GrowthBook } from "@growthbook/growthbook-react";
 import { useEffect } from "react";
 import { GrowthBookProvider } from "@growthbook/growthbook-react";
-
+import Head from "next/head";
 import "./globals.css";
 
 
@@ -49,6 +49,12 @@ export default function RootLayout({
   return (
     <GrowthBookProvider growthbook={growthbook}>
     <html lang="en">
+      <Head>
+        <title>Setups.Bike</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+        <meta name="swag"></meta>
+        {children}
+      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

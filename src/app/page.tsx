@@ -26,7 +26,7 @@ export default async function Home() {
   gb.destroy();
 
   return (
-    <div className="size-full bg-black">
+    <div className="size-full">
           {newTitle ?
             <LandingA /> :
             <LandingB />}

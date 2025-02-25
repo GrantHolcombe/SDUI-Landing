@@ -14,8 +14,8 @@ export default {
         foreground: "var(--foreground)",
       },
       animation: {
-        'loop-scroll': 'loop-scroll 50s linear infinite',
-        'loop-scroll-reverse': 'loop-scroll-reverse 50s linear infinite'
+        'loop-scroll': 'loop-scroll 100s linear infinite',
+        'loop-scroll-reverse': 'loop-scroll-reverse 100s linear infinite'
       },
       keyframes: {
         'loop-scroll': {

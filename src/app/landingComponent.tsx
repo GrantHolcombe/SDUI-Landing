@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function LandingA() {
     //setup arrays for scrolling text animation
     let heading1: Array<string> = [],
@@ -35,8 +37,21 @@ export function LandingA() {
 export function LandingB() {
 
   return (
-    <div >
-        <div>idk a second landing idea</div>
+    <div className="size-full bg-white flex flex-col sm:flex-row ">
+        <div className="w-full h-[400px] sm:h-dvh sm:w-[50%] bg-blue-300/10 relative flex">
+            <Image fill src={"/bg2.png"} alt="Illustration of person with a phone outdoors"/>
+        </div>
+        <div className="w-full h-[calc(100vh-400px)] sm:h-dvh sm:w-[50%] bg-blue-300/20 flex flex-column justify-center items-center">
+            <div className="w-full px-8">
+                <div dir="rtl" className="text-3xl text-center sm:text-right font-extrabold text-blue-500/70 uppercase drop-shadow-lg">Setups.bike</div>
+                <div dir="rtl" className="text-xl text-center sm:text-right text-blue-500/70 drop-shadow-lg">Let us remember the clicks</div>
+                <div className="flex flex-row justify-center sm:justify-end ">
+                    <button className="px-6 py-2 mt-8 text-white font-extrabold bg-blue-400/50 rounded border border-white shadow-white shadow-sm">Sign Up!</button>
+                    <button className="px-6 py-2 mt-8 text-white ml-4 font-extrabold bg-gray-500/30 rounded border border-white shadow-white shadow-sm">Login</button>
+                </div>
+            </div>
+        </div>
+
     </div>
   );
 }
